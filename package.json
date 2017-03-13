@@ -10,7 +10,8 @@
     "client-js": "rollup -c",
     "client-js:w": "rollup -c -w",
     "html-css": "gulp copy-only",
-    "html-css:w": "gulp copy-watch"
+    "html-css:w": "gulp copy-watch",
+    "rest": "json-server --watch db.json --port 3010"
   },
   "repository": {
     "type": "git",
@@ -56,6 +57,7 @@
     "requirejs": "^2.3.3",
     "rollup": "^0.41.5",
     "rollup-plugin-babel": "^2.7.1",
+    "rollup-plugin-commonjs": "^8.0.2",
     "rollup-plugin-node-resolve": "^2.0.0",
     "rollup-watch": "^3.2.2",
     "socket.io": "^1.7.2",

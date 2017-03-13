@@ -18,6 +18,13 @@ Breaks:
 - Afternoon #1: 1:50pm to 2:00pm
 - Afternoon #2: 3:15pm to 3:25pm
 
+## Course Outline
+
+- Monday - Wednesday (normal class time) - Web Browser JavaScript Programming
+- Wednesday Bonus Session - Design Patterns
+- Thursday - Additional JavaScript APIs, especially Modules
+- Friday - Frameworks
+
 ## Links
 
 ### Instructor's Resources
