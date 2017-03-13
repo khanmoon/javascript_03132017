@@ -1,0 +1,30 @@
+1. In the index.html page, create profile form which collects the following values:
+
+First Name, Last Name, Phone, Email
+
+Use a form tag, wire up labels and have a button to click when the form is filled out.
+
+2. Wire up an event handler using an arrow function to output the collected form data
+to the console.
+
+3. Build an HTML table, each time you submit the contact form, I would like to add
+the information as a new row to the table.
+
+4. Move the table generation to a function. Only regenerate the table when the underlying
+model data has changed. Add a refresh button to the table which triggers the table to
+redraw.
+
+Workflow
+
+1. Type in a new profile. Click Add.
+2. Add the new profile to an array of profiles.
+3. Click the Refresh button, and trigger the UI to update.
+4. Only update the table if new data has been added since the last refresh.
+
+5. Setup a Profile class. When you click Add Profile, create a new instance of the profile class, and populate with the form data. Use accessor properties for the first name, last name, phone and email.  Add the instance to the array of profiles.
+
+6. In table, display the first and last name in the same column. It should be in the format lastname, firstname. Generate the first and last name format using a function on the class.
+
+| Smith, Jane | 123-123-1234 | jane@smith.com |
+
+7. Make additional corrections to your existing code to make it all work.
