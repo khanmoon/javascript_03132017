@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <title>Welcome to JavaScript!</title>
+        <link href="css/styles.css" rel="stylesheet">
+        <script src="js/bundle.js"></script>
+    </head>
+
+    <body>
+        <h1>Welcome to JavaScript!!</h1>
+        <script>
+
+            'use strict';
+
+            function doIt() {
+
+                console.log(this);
+            }
+
+            //doIt();
+            window.doIt();
+
+            var o = {
+                id: 2,
+                doIt: doIt
+            };
+
+            o.doIt();
+
+            //console.log(o.doIt === doIt);
+
+            setTimeout(o.doIt, 1000);
+
+        </script>
+    </body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <title>Welcome to JavaScript!</title>
+        <link href="css/styles.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <h1>Welcome to JavaScript!!</h1>
+        <!--<ul id="color-list"></ul>-->
+        <script src="js/bundle.js"></script>
+        <script>
+
+            'use strict';
+
+            const t = {
+                fn: 'Bob',
+                ln: 'Smith',
+            };
+
+            let s = t;
+
+            Object.freeze(s);
+
+            //s.fn = 'Jane';
+            console.log(t === s);
+
+            s = Object.assign({}, s, { fn: 'Jane' });
+
+            console.log(t);
+            console.log(s);
+            console.log(t === s);
+
+        </script>
+    </body>
+
+</html>

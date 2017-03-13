@@ -1,1 +1,4 @@
-console.log('Hello World!');
+import $ from 'jquery';
+
+// retrieve
+$('#first-name').val()
