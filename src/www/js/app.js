@@ -28,18 +28,18 @@ Profile.prototype.getFullName = function() {
     return this.lastName + ', ' + this.firstName;
 };
 
-function CustomerProfile() {
+// function CustomerProfile() {
 
-}
+// }
 
-getFullName => 'Customer: ' + firstName + lastName
+// getFullName => 'Customer: ' + firstName + lastName
 
 
-function VendorProfile() {
+// function VendorProfile() {
 
-}
+// }
 
-getFullName => 'Vendor: ' + lastName
+// getFullName => 'Vendor: ' + lastName
 
 
 let profiles = [];
@@ -56,6 +56,18 @@ const addProfile = () => {
 
     // choose the correct profile constructor function based upon the selection
     // of the radio button
+
+    // cool and efficient
+    console.log($('[name=profileType]:checked').val());
+
+    // inspects the checked property for the specified radio
+    console.log($('#profile-type-customer').prop('checked'));
+    console.log($('#profile-type-customer')[0].checked); // access the checked prop off the DOM object
+    
+    // these seem like they would work, but do not
+    console.log($('#profile-type-customer').checked);
+    console.log($('#profile-type-customer').attr('checked'));
+
 
     const newProfile = new Profile();
     newProfile.firstName = profileForm.firstNameInput.val();
