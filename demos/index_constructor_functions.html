@@ -27,17 +27,6 @@
                 <label for="email">Email</label>
                 <input type="text" name="email" id="email" value="">
             </div>
-            <fieldset>
-                <legend>Type of Profile</legend>
-                <div>
-                    <label>Customer:</label>
-                    <input type="radio" name="profileType" id="profile-type-customer" value="customer">
-                </div>
-                <div>
-                    <label>Vendor:</label>
-                    <input type="radio" name="profileType" id="profile-type-vendor" value="vendor">
-                </div>
-            </fieldset>
             <button id="add-profile" type="button">Add Profile</button>
         </form>
 
@@ -66,25 +55,30 @@
                 return this.firstName + ' ' + this.lastName;
             };
 
-            function Student(studentId, firstName, lastName) {
-                this._super(firstName, lastName);
-                this.studentId = studentId;
-            }
+            const p = new Person('Bob', 'Smith');
+            console.log(p.firstName);
+            const p2 = new Person('Jane', 'Deputy');
+            console.log(p2.firstName);
 
-            Student.prototype = Object.create(Person.prototype);
-            Student.prototype.constructor = Student;
-            Student.prototype._super = Person;
+            // console.log(Object.getPrototypeOf(p) === Person.prototype);
+            // console.log(p instanceof Person);
+            // console.log(Object.getPrototypeOf(Person) === Person.__proto__);
 
-            Student.prototype.getRecordInfo = function() {
-                return this.studentId + ' ' + this.lastName + ', ' + this.firstName;
+            console.dir(p);
+            console.dir(p2);
+            console.log(Object.getPrototypeOf(p) === Object.getPrototypeOf(p2));
+            console.log(p.getFullName === p2.getFullName);
+
+            console.log(p.getFullName());
+            console.log(p2.getFullName());
+
+            const prototypeOfP = Object.getPrototypeOf(p)
+            prototypeOfP.getFullName = function() {
+                console.log("you've been hacked!")
             };
 
-            const s = new Student(1, 'Bob', 'Smith');
-            console.log(s.getFullName());
-            console.log(s.getRecordInfo());
-            console.dir(s);
-
-
+            p2.getFullName();
+            
 
         </script>
 

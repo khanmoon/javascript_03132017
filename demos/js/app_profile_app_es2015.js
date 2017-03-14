@@ -1,32 +1,47 @@
 import $ from 'jquery';
 
+class Profile {
 
+    constructor() {
+        this.attributes = {};
+    }
 
-function addAccessorProperty(obj, propName) {
-    Object.defineProperty(obj, propName, {
-        configurable: true,
-        enumerable: true,
-        get: function() { return this.attributes[propName]; },
-        set: function(value) { this.attributes[propName] = value; }
-    });
+    get firstName() {
+        return this.attributes.firstName;
+    }
+
+    set firstName(value) {
+        return this.attributes.firstName = value;
+    }
+
+    get lastName() {
+        return this.attributes.lastName;
+    }
+
+    set lastName(value) {
+        return this.attributes.lastName = value;
+    }
+
+    get phone() {
+        return this.attributes.phone;
+    }
+
+    set phone(value) {
+        return this.attributes.phone = value;
+    }
+
+    get email() {
+        return this.attributes.email;
+    }
+
+    set email(value) {
+        return this.attributes.email = value;
+    }
+
+    getFullName() {
+        return this.lastName + ', ' + this.firstName;
+    }    
 }
-
-function addAccessorProperties(obj, fields) {
-    fields.forEach(function(field) {
-        addAccessorProperty(obj, field);
-    });
-}
-
-function Profile() {
-    this.attributes = {};
-}
-
-const fields = ['firstName', 'lastName', 'phone', 'email'];
-addAccessorProperties(Profile.prototype, fields);
-
-Profile.prototype.getFullName = function() {
-    return this.lastName + ', ' + this.firstName;
-};
 
 
 let profiles = [];

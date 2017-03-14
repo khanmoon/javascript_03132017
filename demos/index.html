@@ -27,17 +27,6 @@
                 <label for="email">Email</label>
                 <input type="text" name="email" id="email" value="">
             </div>
-            <fieldset>
-                <legend>Type of Profile</legend>
-                <div>
-                    <label>Customer:</label>
-                    <input type="radio" name="profileType" id="profile-type-customer" value="customer">
-                </div>
-                <div>
-                    <label>Vendor:</label>
-                    <input type="radio" name="profileType" id="profile-type-vendor" value="vendor">
-                </div>
-            </fieldset>
             <button id="add-profile" type="button">Add Profile</button>
         </form>
 
@@ -57,34 +46,43 @@
 
         <script>
 
-            function Person(firstName, lastName) {
-                this.firstName = firstName;
-                this.lastName = lastName;
-            }
 
-            Person.prototype.getFullName = function() {
-                return this.firstName + ' ' + this.lastName;
+            const p = {
+                name: 'p',
+                amt: 2000,
+                address: {
+                    city: 'Atlanta',
+                    state: 'GA',
+                },
             };
 
-            function Student(studentId, firstName, lastName) {
-                this._super(firstName, lastName);
-                this.studentId = studentId;
+            const c = Object.create(p);
+            c.name = 'c';
+
+            console.log(c.amt);
+            p.amt = 1000;
+            console.log(c.amt);
+            c.amt = 500;
+            console.log(c.amt);
+            delete c.amt;
+            console.log(c.amt);
+
+            console.log(c.address.city);
+            c.address.city = 'San Francisco';
+            
+            console.log(Object.getPrototypeOf(c) === p);
+
+            console.log(c.hasOwnProperty('amt'));
+            console.log(p.hasOwnProperty('amt'));
+
+            for (var propName in c) {
+                if (c.hasOwnProperty(propName)) {
+                    console.log(propName);
+                }
             }
 
-            Student.prototype = Object.create(Person.prototype);
-            Student.prototype.constructor = Student;
-            Student.prototype._super = Person;
-
-            Student.prototype.getRecordInfo = function() {
-                return this.studentId + ' ' + this.lastName + ', ' + this.firstName;
-            };
-
-            const s = new Student(1, 'Bob', 'Smith');
-            console.log(s.getFullName());
-            console.log(s.getRecordInfo());
-            console.dir(s);
-
-
+            console.dir(c);
+            
 
         </script>
 
