@@ -10,96 +10,10 @@
     <body>
 
         <ul>
-
+            <li><div><button id="button1">Remove</button></div><div>Additional Text 1</div></li>
+            <li><button id="button2">Remove</button><div>Additional Text 2</div></li>
+            <li><button id="button3">Remove</button><div>Additional Text 3</div></li>
         </ul>
-
-
-        <script>
-
-            function doIt(item, index, list) {
-                console.log(list);
-            }
-
-            function outer(fn) {
-
-                const items = ['a','b','c'];
-
-                items.forEach(fn);
-
-            }
-
-            outer(doIt);
-
-            // function displayItems(ulNode, items) {
-
-            //     // Array.from(ulNode.children).forEach(liNode => {
-            //     //     console.warn('removed one');
-            //     //     ulNode.removeChild(liNode);
-            //     // });
-
-            //     // items.forEach(item => {
-            //     //     console.warn('created one');
-            //     //     const li = document.createElement('li');
-            //     //     li.innerText = item;
-            //     //     ulNode.appendChild(li);
-            //     // });
-                
-
-            //     // let nodeIndex = 0;
-            //     // let ulChildren = Array.from(ulNode.children);
-
-            //     // for (; nodeIndex < Math.min(ulChildren.length, items.length); nodeIndex++) {
-            //     //     console.log('used existing');
-            //     //     ulNode.children[nodeIndex].innerText = items[nodeIndex]; 
-            //     // }
-
-            //     // for (; nodeIndex < items.length; nodeIndex++) {
-            //     //     console.warn('created one');
-            //     //     const li = document.createElement('li');
-            //     //     li.innerText = items[nodeIndex];
-            //     //     ulNode.appendChild(li);
-            //     // }
-
-            //     // if (ulNode.children.length > items.length) {
-            //     //     console.warn('removed one');
-            //     //     Array.from(ulNode.children).slice(items.length).forEach(liNode => {
-            //     //         ulNode.removeChild(liNode);
-            //     //     })
-            //     // }
-            // }
-
-            document.addEventListener('DOMContentLoaded', function() {
-                const h1 = document.createElement('h1');
-                //h1.innerText = 'Hello World!';
-
-                const headerText = document.createTextNode('Hello World!');
-                h1.appendChild(headerText);
-
-                h1.id = 'page-header';
-                h1.setAttribute('data-serbia-rocks', 'true');
-                //h1.setAttribute('id', 'page-header');
-                h1.classList.add('brain');
-                h1.classList.add('jocks');
-
-                document.body.appendChild(h1);
-
-                const items = ['Item 1', 'Item 2', 'Item 3'];
-
-                displayItems(document.querySelector('ul'), items);
-                items.splice(1,1);
-                displayItems(document.querySelector('ul'), items);
-
-                document.querySelector('li:nth-child(2)').innerText = document.querySelector('li:nth-child(3)').innerText;
-                document.querySelector('li:nth-child(3)').remove();
-            });
-
-            // $(document).ready(function() {
-            //     $('body').append($('h1').text('Hello World!'));
-            // });
-
-
-        </script>
-
 
         <script src="js/bundle.js"></script>
     </body>
