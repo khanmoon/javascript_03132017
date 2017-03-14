@@ -1,7 +1,5 @@
 import $ from 'jquery';
 
-
-
 function addAccessorProperty(obj, propName) {
     Object.defineProperty(obj, propName, {
         configurable: true,
