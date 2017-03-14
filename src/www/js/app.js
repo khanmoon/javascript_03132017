@@ -1,14 +1,47 @@
 import $ from 'jquery';
 
-// $('div')
-// $('<div>')
-// $(function() {
+class Profile {
 
-// }); // $(document).ready(function() { });
+    constructor() {
+        this.attributes = {};
+    }
 
-// const div = document.createElement('div');
+    get firstName() {
+        return this.attributes.firstName;
+    }
 
-// $(div)
+    set firstName(value) {
+        return this.attributes.firstName = value;
+    }
+
+    get lastName() {
+        return this.attributes.lastName;
+    }
+
+    set lastName(value) {
+        return this.attributes.lastName = value;
+    }
+
+    get phone() {
+        return this.attributes.phone;
+    }
+
+    set phone(value) {
+        return this.attributes.phone = value;
+    }
+
+    get email() {
+        return this.attributes.email;
+    }
+
+    set email(value) {
+        return this.attributes.email = value;
+    }
+
+    getFullName() {
+        return this.lastName + ', ' + this.firstName;
+    }    
+}
 
 
 let profiles = [];
@@ -23,12 +56,13 @@ const profileForm = {
 
 const addProfile = () => {
 
-    profiles = profiles.concat({
-        firstName: profileForm.firstNameInput.val(),
-        lastName: profileForm.lastNameInput.val(),
-        phone: profileForm.phoneInput.val(),
-        email: profileForm.emailInput.val(),
-    });
+    const newProfile = new Profile();
+    newProfile.firstName = profileForm.firstNameInput.val();
+    newProfile.lastName = profileForm.lastNameInput.val();
+    newProfile.phone = profileForm.phoneInput.val();
+    newProfile.email = profileForm.emailInput.val();
+
+    profiles = profiles.concat(newProfile);
 
     profileForm.firstNameInput.val('');
     profileForm.lastNameInput.val('');
@@ -46,38 +80,13 @@ const refreshProfiles = () => {
 
         profiles.forEach(profile => {
 
-            // const tdFirstName = $('<td>');
-            // tdFirstName.text(profile.firstName);
-
-            // const tdLastName = $('<td>');
-            // tdLastName.text(profile.lastName);
-
-            // const tdPhone = $('<td>');
-            // tdPhone.text(profile.phone);
-
-            // const tdEmail = $('<td>');
-            // tdEmail.text(profile.email);
-
-            // const trProfile = $('<tr>');
-            // trProfile.append(tdFirstName);
-            // trProfile.append(tdLastName);
-            // trProfile.append(tdPhone);
-            // trProfile.append(tdEmail);
-
-            // tbody.append(trProfile);
-
             tbody.append(
                 $('<tr>')
-                    .append( $('<td>').text(profile.firstName) )
-                    .append( $('<td>').text(profile.lastName) )
+                    .append( $('<td>').text(profile.getFullName()) )
                     .append( $('<td>').text(profile.phone) )
                     .append( $('<td>').text(profile.email) )
             );
 
-            const td = document.createElement('td');
-            td.innerText = profile.firstName;
-
-            tbody.html('<tr><td>' + profile.firstName + '</td></tr>');
         });
 
         lastProfiles = profiles;
@@ -86,5 +95,4 @@ const refreshProfiles = () => {
 };
 
 $('#add-profile').on('click', addProfile);
-
 $('#refresh-profiles').on('click', refreshProfiles);
