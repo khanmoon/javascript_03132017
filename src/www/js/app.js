@@ -28,6 +28,19 @@ Profile.prototype.getFullName = function() {
     return this.lastName + ', ' + this.firstName;
 };
 
+function CustomerProfile() {
+
+}
+
+getFullName => 'Customer: ' + firstName + lastName
+
+
+function VendorProfile() {
+
+}
+
+getFullName => 'Vendor: ' + lastName
+
 
 let profiles = [];
 let lastProfiles = null;
@@ -40,6 +53,9 @@ const profileForm = {
 };
 
 const addProfile = () => {
+
+    // choose the correct profile constructor function based upon the selection
+    // of the radio button
 
     const newProfile = new Profile();
     newProfile.firstName = profileForm.firstNameInput.val();
