@@ -9,6 +9,32 @@
 
     <body>
         <script src="js/bundle.js"></script>
+        <script>
+
+            // fetch('http://localhost:3010/books')
+            //     .then(res => res.json())
+            //     .then(books => console.log(books));
+
+
+            // build me a fetch function which returns a promise
+            // when I call then on the promise, I want the results
+            // to be passed in
+
+            // fetch('http://localhost:3010/books')
+            //    .then(results => console.log(results));
+
+            const xhr = new XMLHttpRequest();
+
+            xhr.addEventListener('readystatechange', () => {
+                if (xhr.status === 200 && xhr.readyState === 4) {
+                    console.log(JSON.parse(xhr.responseText));
+                }
+            });
+
+            xhr.open('GET', 'http://localhost:3010/books');
+            xhr.send();
+            
+        </script>
     </body>
 
 </html>

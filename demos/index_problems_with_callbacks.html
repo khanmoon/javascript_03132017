@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <title>Welcome to JavaScript!</title>
+        <link href="css/styles.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <script src="js/bundle.js"></script>
+        <script>
+
+            let c = 0;
+
+            c++;
+            setTimeout(() => {
+                console.log('first');
+                c--;
+                if (c===0) {
+                    allDone();
+                }
+            }, 100);
+
+            c++;
+            setTimeout(() => {
+                console.log('second');
+                c--;
+                if (c===0) {
+                    allDone();
+                }
+            }, 4000);
+
+            c++;
+            setTimeout(() => {
+                console.log('third');
+                c--;
+                if (c===0) {
+                    allDone();
+                }
+            }, 2300);
+
+            function allDone() {
+                console.log('all done');
+            }
+
+            // setTimeout(() => {
+            //     console.log('first timeout');
+            //     setTimeout(() => {
+            //         console.log('second timeout');
+            //         setTimeout(() => {
+            //             console.log('second timeout');
+            //             setTimeout(() => {
+            //                 console.log('second timeout');
+            //             }, 500);
+            //         }, 500);
+            //     }, 500);
+            // }, 1000);
+
+
+
+            // try {
+
+            //     setTimeout(() => {
+            //         throw Error('something went wrong!');
+            //     }, 0);
+
+            //     console.log('did it');
+
+            // } catch(err) {
+            //     console.log(err);
+            // }
+
+
+            // const inner = (f) => {
+
+            //     return () => {
+            //         console.log(`f: ${f}`);
+            //     };
+            // };
+
+            // const outer = () => {
+
+            //     let t = 2;
+
+            //     setTimeout(inner(t), 0);
+
+            //     console.log('made it here!');
+
+            // };
+
+            // outer();
+
+
+
+        </script>
+    </body>
+
+</html>
