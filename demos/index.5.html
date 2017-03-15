@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <title>Welcome to JavaScript!</title>
+        <link href="css/styles.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <script src="js/bundle.js"></script>
+        <script>
+
+            var t = undefined;
+            console.log(typeof t);
+            
+            t = 'hello!';
+            console.log(typeof t);
+
+            t = 2;
+            console.log(typeof t);
+
+            t = true;
+            console.log(typeof t);
+
+            t = Symbol('demo');
+            console.log(typeof t);
+
+            t = null;
+            console.log(typeof t);
+
+            t = { id: 2 };
+            console.log(typeof t);
+
+            t = [ 1, 2, 3 ];
+            console.log(typeof t);
+            console.log(t instanceof Array);
+
+            t = function() {
+                console.log('t');
+            };
+            t.someProp = 'test';
+            console.log(typeof t);
+            console.dir(t);
+
+
+        </script>
+    </body>
+
+</html>

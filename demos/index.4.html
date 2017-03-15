@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <title>Welcome to JavaScript!</title>
+        <link href="css/styles.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <script src="js/bundle.js"></script>
+
+
+        <script>
+
+
+            function doIt() {
+                var t= 2;
+                  
+
+                {
+                  let g = 3;
+                }
+            }
+
+            doIt()
+
+            var x = 0, y = 0, funcs = [];
+
+            for (; x<5; x++) {
+                // #1: edit the code between and
+                // #2: you cannot use the variable y in the function
+                // #3: you cannot invoke the function in the first loop
+
+                //const t = x;
+
+                // var f = function() {
+                //     var t = x;
+                //     funcs.push(function() {
+                //         console.log(t);
+                //     });
+                // };
+
+                // f();
+
+                let t = x;
+                funcs.push(function() {
+                    console.log(t);
+                });               
+
+                (function() {
+                    var t = x;
+                    funcs.push(function() {
+                        console.log(t);
+                    });
+                })();
+
+                // here
+            }
+
+            for (; y<5; y++) {
+                funcs[y]();
+            }
+
+            // 0
+            // 1
+            // 2
+            // 3
+            // 4
+
+
+        </script>
+    </body>
+
+</html>
