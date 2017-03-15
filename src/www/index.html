@@ -11,9 +11,14 @@
         <script src="js/bundle.js"></script>
         <script>
 
+            // using the geolocation API below, create a function named
+            // getLocation. This function should return a promise object
+            // Off the promise, register a function with then, when function
+            // executes it should recieve the position data
+
             var x = document.getElementById("demo");
             
-            function getLocation() {
+            function findMyPosition() {
                 if (navigator.geolocation) {
                     navigator.geolocation.getCurrentPosition(showPosition);
                 } else {
@@ -26,6 +31,7 @@
                 "<br>Longitude: " + position.coords.longitude; 
             }
 
+            // test code to see if your getLocation works
             getLocation().then(position => console.log(position));
 
         </script>
