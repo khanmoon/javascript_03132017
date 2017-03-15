@@ -2,12 +2,14 @@
 import resolve from 'rollup-plugin-node-resolve';
 import babel from 'rollup-plugin-babel';
 import commonjs from 'rollup-plugin-commonjs';
+import asyncHelper from 'rollup-plugin-async';
 
 export default {
     entry: 'src/www/js/app.js',
     format: 'cjs',
     plugins: [
         resolve(),
+        asyncHelper(),
         babel({
             exclude: 'node_modules/**'
         }),

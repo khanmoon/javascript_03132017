@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <title>Welcome to JavaScript!</title>
+        <link href="css/styles.css" rel="stylesheet">
+    </head>
+
+    <body>
+
+        <ul>
+            <li><div><button id="button1">Remove</button></div><div>Additional Text 1</div></li>
+            <li><button id="button2">Remove</button><div>Additional Text 2</div></li>
+            <li><button id="button3">Remove</button><div>Additional Text 3</div></li>
+        </ul>
+
+        <script>
+
+            'use strict';
+
+            function outer() {
+
+                console.log('outer', this);
+                const that = this;
+
+                // keyword functions use call-site this
+                // prototype inheritance - define the function on the parent
+                // object
+                // yet, call it from any number of child objects
+                const inner = function() {
+                    console.log('that', that); // using lexical scope via closure
+                    console.log('inner', this); // call-site this
+                };
+
+                // arrow functions use lexical this
+                // always use arrow functions unless prototype inheritance is
+                // being used, then use call-site this function functions
+                const inner2 = () => {
+                    console.log('inner2', this); // lexical this
+                };
+
+                inner();
+                inner2();
+            }
+
+            outer.call({ id: 2 });
+
+
+        </script>
+
+        <script src="js/bundle.js"></script>
+    </body>
+
+</html>
