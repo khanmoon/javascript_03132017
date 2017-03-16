@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <title>Welcome to JavaScript!</title>
+        <link href="css/styles.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <script src="js/bundle.js"></script>
+        <script>
+
+            'use strict';
+
+            function doIt(a, b) {
+                console.log(this);
+                console.log(a, b);
+            }
+
+            doIt.call({ id: 3 }, 1, 2);
+            doIt.apply({ id: 3 }, [1, 2]);
+
+            //var fn = doIt.bind({ id: 4 });
+
+            var fn = bindFn(doIt, { id: 5});
+
+            function bindFn(fn, valueOfThis) {
+
+                return function() {
+                    return fn.call(valueOfThis);
+                };
+
+            }
+            fn.call({})
+
+            fn(1,2);
+
+
+
+        </script>
+    </body>
+
+</html>

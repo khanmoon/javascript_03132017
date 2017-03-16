@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <title>Welcome to JavaScript!</title>
+        <link href="css/styles.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <script src="js/bundle.js"></script>
+        <script>
+
+            'use strict';
+
+            const outer = () => {
+                console.log('outer');
+            };
+
+            outer();
+
+            function outer() {
+
+                console.log(this);
+
+                //var that = this;
+
+                setTimeout(() => {
+
+                    console.log(this);
+
+                }, 2000);
+
+            }
+
+            var o = {
+                id: 2,
+                outer: outer
+            };
+
+            o.outer();
+
+
+
+        </script>
+    </body>
+
+</html>

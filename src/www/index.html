@@ -11,66 +11,124 @@
         <script src="js/bundle.js"></script>
         <script>
 
-            // using the geolocation API below, create a function named
-            // getLocation. This function should return a promise object
-            // Off the promise, register a function with then, when function
-            // executes it should recieve the position data
+            'use strict';
 
-            var x = document.getElementById("demo");
-            
-            function findMyPosition() {
-                if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(showPosition);
-                } else {
-                    x.innerHTML = "Geolocation is not supported by this browser.";
-                }
-            }
-            
-            function showPosition(position) {
-                x.innerHTML = "Latitude: " + position.coords.latitude + 
-                "<br>Longitude: " + position.coords.longitude; 
+            function Person(fn, ln) {
+                this.fn = fn;
+                this.ln = ln;
+
+                Person.create
             }
 
-            // test code to see if your getLocation works
-            getLocation().then(position => console.log(position));
-
-        </script>
-        <script>
-
-            // fetch('http://localhost:3010/books')
-            //     .then(res => res.json())
-            //     .then(books => console.log(books));
-
-
-            // build me a fetch function which returns a promise
-            // when I call then on the promise, I want the results
-            // to be passed in
-
-            // fetch('http://localhost:3010/books')
-            //    .then(results => console.log(results));
-
-            // https://github.com/training4developers/javascript_03132017
-
-            const fetch = (url) => {
-
-                return new Promise((resolve, reject) => {
-
-                    const xhr = new XMLHttpRequest();
-
-                    xhr.addEventListener('readystatechange', () => {
-                        if (xhr.status === 200 && xhr.readyState === 4) {
-                            resolve(JSON.parse(xhr.responseText));
-                        }
-                    });
-
-                    xhr.open('GET', url);
-                    xhr.send();
-
-                });
+            Person.prototype.getFullName = function() {
+                return this.fn + ' ' + this.ln;
             };
 
-            fetch('http://localhost:3010/books')
-                .then(results => console.log(results));
+            Person.create = function(fullName) {
+
+                var nameParts = fullName.split(' ');
+
+                return new Person(nameParts[0], nameParts[1]);
+            };
+            
+            var p3 = Person.create('Bob Lee');
+            console.log(p3);
+            console.dir(Person);
+
+            Object.defineProperty(Person.prototype, 'firstName', {
+                configurable: true,
+                enumerable: true,
+                get: function() {
+                    return this.fn;
+                },
+                set: function(value) {
+                    this.fn = value;
+                }
+            })
+
+            function Student(studentId, fn, ln) {
+                this._super.call(this, fn, ln);
+                this.studentId = studentId;
+            }
+
+            Student.prototype = Object.create(Person.prototype);
+            Student.prototype.constructor = Student;
+            Student.prototype._super = Person;
+
+            Student.prototype.getRecordInfo = function() {
+                return this.studentId + ' ' + this.ln + ', ' + this.fn;
+            };
+
+            // var s = new Student(2, 'Brian','Beckham');
+            // console.log(s.getFullName());
+            // console.log(s.getRecordInfo());
+            // console.log(s);
+            // console.log(s.firstName);
+            // s.firstName = 'CJ';
+            // console.log(s.getFullName());
+
+            // console.dir(Student);
+
+            class Person2 {
+
+                constructor(fn, ln) {
+                    this.fn = fn;
+                    this.ln = ln;
+                }
+
+                static create(fullName) {
+
+                    var nameParts = fullName.split(' ');
+
+                    return new Person2(nameParts[0], nameParts[1]);
+                }
+
+                getFullName() {
+                    return this.fn + ' ' + this.ln;
+                }
+
+                get firstName() {
+                    return this.fn;
+                }
+
+                set firstName(value) {
+                    this.fn = value;
+                }
+
+            }
+
+
+
+            var p4 = Person2.create('Bob Smith');
+            console.log(p4);
+            console.dir(Person2);
+
+            class Student2 extends Person2 {
+
+                constructor(studentId, fn, ln) {
+                    super(fn, ln);
+                    this.studentId = studentId;
+
+                    this.getFullName = this.getFullName.bind(this);
+                }
+
+                getRecordInfo() {
+                    return this.studentId + ' ' + this.ln + ', ' + this.fn;
+                };
+            }
+
+            Student2.prototype.newFunction = function() {
+
+            };
+
+            // var s2 = new Student2(1, 'Stephanie','Beckham');
+            // console.log(s2.getFullName());
+            // console.log(s2.getRecordInfo());
+            // console.log(s2);
+
+            // console.dir(Student2);
+
+
 
 
         </script>

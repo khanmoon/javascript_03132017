@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <title>Welcome to JavaScript!</title>
+        <link href="css/styles.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <script src="js/bundle.js"></script>
+        <script>
+
+
+            function Promise(fn) {
+
+                var resolveFns = [];
+                var rejectFns = [];
+
+                function resolve(data) {
+                    resolveFns.forEach(fn => fn(data));
+                }
+
+                function reject(data) {
+                    rejectFns.forEach(fn => fn(data));
+                }
+
+                this.then = function(fn) {
+                    resolveFns.push(fn);
+                };
+
+                this.catch = function(fn) {
+                    rejectFns.push(fn);
+                };
+
+
+                fn(resolve, reject);
+            }
+
+            const p1 = new Promise((resolve, reject) => setTimeout(() => resolve('a'), 1000));
+            const p2 = new Promise((resolve, reject) => setTimeout(() => resolve('b'), 3000));
+            const p3 = new Promise((resolve, reject) => setTimeout(() => reject('c'), 2000));
+            const p4 = new Promise((resolve, reject) => setTimeout(() => resolve('d'), 4000));
+
+            p1.then(results => console.log(results));
+            p2.then(results => console.log(results));
+            p3.then(results => console.log(results))
+                .catch(results => console.log('rejected', results));
+            p4.then(results => console.log(results));
+
+            const p5 = Promise.all([p1,p3]);
+
+            p5.then(results => console.log(results));
+
+            Promise.all([p5,p2,p4]).then(results => {
+                console.log(results);
+            }).catch(results => {
+                console.log(results);
+                console.log('one failed');
+            });
+
+
+
+
+
+
+
+        </script>
+    </body>
+
+</html>

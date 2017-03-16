@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <title>Welcome to JavaScript!</title>
+        <link href="css/styles.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <script src="js/bundle.js"></script>
+        <script>
+
+            'use strict';
+
+            function doIt() {
+                console.log(this);
+            }
+
+            doIt();
+            window.doIt();
+
+            var o = {
+                id: 2,
+                doIt: doIt
+            };
+
+            o.doIt();
+
+            console.log(o.doIt === window.doIt);
+
+
+            var person = {
+                fn: 'Bob',
+                ln: 'Johnson',
+                getFullName: function() {
+                    return this.fn + ' ' + this.ln;
+                }
+            };
+
+            var person2 = {
+                fn: 'Joe',
+                ln: 'Smith',
+                getFullName: person.getFullName
+            };
+
+            console.log(person.getFullName());
+            console.log(person2.getFullName());
+
+
+
+        </script>
+    </body>
+
+</html>
