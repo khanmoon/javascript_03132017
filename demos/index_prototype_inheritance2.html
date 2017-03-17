@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <title>Welcome to JavaScript!</title>
+        <link href="css/styles.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <script src="js/bundle.js"></script>
+        <script>
+
+            // Using either the fetch API or the XHR object wrapped in a promise,
+            // make a request against the rest service to retrieve a list of books.
+
+            // Create a book class which contains a property on the class for property
+            // returns in the JSON
+
+            // one accessor (get,set) for one of the properties of the book
+            // one function that will return some kind of data about the book
+            // one static helper function which will accept a string of text and 
+            // return a new book object
+
+            // Take the JSON returned from the REST service, and produce an array of
+            // book objects created from the class
+
+
+            // async operation of fetch book json
+            fetch().then(res => res.json()).then((rawBooks) => {
+                books = processBooks(rawBooks);
+            }); // synchronously
+            // sync operation of creating book objects
+            books = processBooks(rawBooks);
+
+
+            'use strict';
+
+            function Person(fn, ln) {
+                this.fn = fn;
+                this.ln = ln;
+
+                Person.create
+            }
+
+            Person.prototype.getFullName = function() {
+                return this.fn + ' ' + this.ln;
+            };
+
+            Person.create = function(fullName) {
+
+                var nameParts = fullName.split(' ');
+
+                return new Person(nameParts[0], nameParts[1]);
+            };
+            
+            var p3 = Person.create('Bob Lee');
+            console.log(p3);
+            console.dir(Person);
+
+            Object.defineProperty(Person.prototype, 'firstName', {
+                configurable: true,
+                enumerable: true,
+                get: function() {
+                    return this.fn;
+                },
+                set: function(value) {
+                    this.fn = value;
+                }
+            })
+
+            function Student(studentId, fn, ln) {
+                this._super.call(this, fn, ln);
+                this.studentId = studentId;
+            }
+
+            Student.prototype = Object.create(Person.prototype);
+            Student.prototype.constructor = Student;
+            Student.prototype._super = Person;
+
+            Student.prototype.getRecordInfo = function() {
+                return this.studentId + ' ' + this.ln + ', ' + this.fn;
+            };
+
+            // var s = new Student(2, 'Brian','Beckham');
+            // console.log(s.getFullName());
+            // console.log(s.getRecordInfo());
+            // console.log(s);
+            // console.log(s.firstName);
+            // s.firstName = 'CJ';
+            // console.log(s.getFullName());
+
+            // console.dir(Student);
+
+            class Person2 {
+
+                constructor(fn, ln) {
+                    this.fn = fn;
+                    this.ln = ln;
+                }
+
+                static create(fullName) {
+
+                    var nameParts = fullName.split(' ');
+
+                    return new Person2(nameParts[0], nameParts[1]);
+                }
+
+                getFullName() {
+                    return this.fn + ' ' + this.ln;
+                }
+
+                get firstName() {
+                    return this.fn;
+                }
+
+                set firstName(value) {
+                    this.fn = value;
+                }
+
+            }
+
+
+
+            var p4 = Person2.create('Bob Smith');
+            console.log(p4);
+            console.dir(Person2);
+
+            class Student2 extends Person2 {
+
+                constructor(studentId, fn, ln) {
+                    super(fn, ln);
+                    this.studentId = studentId;
+
+                    this.getFullName = this.getFullName.bind(this);
+                }
+
+                getRecordInfo() {
+                    return this.studentId + ' ' + this.ln + ', ' + this.fn;
+                };
+            }
+
+            Student2.prototype.newFunction = function() {
+
+            };
+
+            // var s2 = new Student2(1, 'Stephanie','Beckham');
+            // console.log(s2.getFullName());
+            // console.log(s2.getRecordInfo());
+            // console.log(s2);
+
+            // console.dir(Student2);
+
+
+
+
+        </script>
+    </body>
+
+</html>

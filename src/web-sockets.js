@@ -20,6 +20,10 @@ wss.on('connection', ws => {
         clearInterval(handle);
     });
 
+    // ws.on('message', msg => {
+    //     console.log(msg);
+    // });
+
     handle = setInterval(() => {
         ws.send(JSON.stringify(counter++));
     }, 500);

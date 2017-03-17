@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <title>Welcome to JavaScript!</title>
+        <link href="css/styles.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <script src="js/bundle.js"></script>
+        <script>
+
+            // const doIt = (a, b, ...c) => {
+            //     console.log(a, b, c);
+            //     //console.log(arguments);
+            // };
+
+            // const args = [1,2,3];
+
+            // // doIt.apply(null, args);
+            // doIt(...args);
+
+            // const person = {
+            //     fn: 'Dylan', ln: 'McCurry', age: 28,
+            //     address: {
+            //         street: '123 Oak Lane',
+            //         city: 'Atlanta', state: 'GA',
+            //         zipCode: '30066'
+            //     },
+            //     address2: {
+            //         street: '123 Main St.'
+            //     }
+            // };
+
+            // const address = '123 Main St.'
+
+            // const { fn, ln, address: { street }, address2: { street: street2 } } = person;
+
+            // console.log(fn);
+            // console.log(ln);
+            // console.log(street);
+            // console.log(street2);
+
+            // const showFullName = ({ fn, ln }) => {
+            //     console.log(fn + ' ' + ln);
+            // };
+
+            // showFullName(person);
+
+            const firstItems = [ 1, 2 ];
+            const secondItems = [ 4, 5 ];
+
+            console.log(firstItems.concat(3).concat(secondItems));
+
+            console.log([ ...firstItems, 3, ...secondItems ]);
+
+            const [ first, second, ...remaining ] = [ 1, 2, 3, 4, 5];
+
+            console.log(first);
+            console.log(second);
+            console.log(remaining);
+
+            let a = 2;
+            let b = 4;
+            console.log(a,b);
+
+            // const s = a;
+            // a = b;
+            // b = s;
+
+            [b,a] = [a,b];
+
+            console.log(a,b);
+
+
+
+
+
+
+
+            // function doIt(x) {
+
+            // }
+
+            // doIt(1);
+
+            // let x = 1;
+
+            // mov x, 1
+            // jmp doit
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </script>
+    </body>
+
+</html>
